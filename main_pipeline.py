@@ -55,7 +55,7 @@ def sheet_processing(sheet, base_path, words_to_find_list):
     img = clahe.apply(img)
     img = cv2.bilateralFilter(img, 15, 80, 80)
     img_pil = Image.fromarray(img)
-    with PyTessBaseAPI(psm=1, oem=1, lang="trixie_old_version") as api:
+    with PyTessBaseAPI(psm=1, oem=1, lang=config.MODEL_NAME) as api:
         api.SetImage(img_pil)
 
         api.SetVariable("language_model_penalty_non_freq_dict_word", "1")
